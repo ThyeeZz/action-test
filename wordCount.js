@@ -134,3 +134,5 @@ try {
   } catch (error) {
     console.log(error);
   }
+
+  console.log(2)
