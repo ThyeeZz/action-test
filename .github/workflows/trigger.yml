@@ -25,6 +25,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        env: MSERVICE_URL: ${{secrets.MSERVICE_URL}}
+        env: MSERVICE_URL=${{secrets.MSERVICE_URL}}
         run: node wordCount.js
 
