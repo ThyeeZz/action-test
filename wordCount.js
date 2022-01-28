@@ -128,3 +128,4 @@ const countDocsWords = (versionPath) => {
 
 walkApiReferenceFile('APIReference')
 walkDocsFiles('./');
+console.log('finish')
