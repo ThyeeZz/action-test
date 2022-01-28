@@ -70,6 +70,7 @@ const walkApiReferenceFile = async dirpath => {
       });
     });
   }
+  console.log('APIrequestBody--', requestBody);
   try {
     axiosInstance.post("/word-count", {
       count_data: requestBody
@@ -97,7 +98,7 @@ const walkDocsFiles = (dirpath) => {
       });
     }
   });
-  console.log('requestBody--', requestBody);
+  console.log('DOC requestBody--', requestBody);
   try {
     axiosInstance.post("/word-count", { count_data: requestBody });
   } catch (error) {
@@ -125,14 +126,5 @@ const countDocsWords = (versionPath) => {
 
 };
 
-const requestBody = [
-  { version: 'v1.1.1', type: 'doc', count_en: 28996, count_cn: 12201 },
-  { version: 'v2.0.0', type: 'doc', count_en: 81434, count_cn: 60889 }
-]
-try {
-    axiosInstance.post("/word-count", { count_data: requestBody });
-  } catch (error) {
-    console.log(error);
-  }
-
-  console.log(2)
+walkApiReferenceFile('APIReference')
+walkDocsFiles('./');

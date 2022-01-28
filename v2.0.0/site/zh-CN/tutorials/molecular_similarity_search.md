@@ -1,0 +1,34 @@
+---
+id: molecular_similarity_search.md
+title: 分子式检索系统 
+---
+
+# Molecular Similarity Search 
+
+<div class="alert note">
+<h3>Milvus Docs 需要你的帮助</h3>
+本文档暂时没有中文版本，欢迎你成为社区贡献者，协助中文技术文档的翻译。<br>
+你可以通过页面右边的 <b>编辑</b> 按钮直接贡献你的翻译。更多详情，参考 <a href="https://github.com/milvus-io/milvus-docs/blob/v2.0.0/CONTRIBUTING.md">贡献指南</a>。如需帮助，你可以 <a href="https://github.com/milvus-io/milvus-docs/issues/new/choose">提交 GitHub Issue</a>。
+</div>
+
+
+This tutorial demonstrates how to use Milvus, the open-source vector database, to build a molecular similarity search system.
+- [Open Jupyter notebook](https://github.com/milvus-io/bootcamp/blob/master/solutions/molecular_similarity_search/molecular_search.ipynb)
+- [Quick deploy](https://github.com/milvus-io/bootcamp/blob/master/solutions/molecular_similarity_search/quick_deploy)
+- [Try demo](http://35.166.123.214:8002/)
+The third-party software used include:
+- RDKit
+- MySQL
+
+<br/>
+
+Drug discovery is an important part of new medicine research and development. The process of drug discovery includes target selection and confirmation. When fragments or lead compounds are discovered, researchers usually search for similar compounds in internal or commercial compound libraries in order to discover structure-activity relationship (SAR), compound availability. Ultimately, they will evaluate the potential of the lead compounds to be optimized to candidate compounds. In order to discover available compounds from billion-scale compound libraries, chemical fingerprint is usually retrieved for substructure search and molecule similarity search.
+
+<br/>
+
+In this tutorial, you will learn how to build a molecular similarity search system that can retrieve the substructure, superstructure, and similar structure of a particular molecule. RDKit is an open-source cheminformatics software that can convert molecule structures into vectors. Then, the vectors are stored in Milvus and Milvus can perform similarity search on vectors. Milvus also automatically generates a unique ID for each vector. The mapping of vector IDs and structure of molecules are stored in MySQL.
+
+<br/>
+
+![molecular](../../../assets/molecular.png "Workflow of a molecular similarity search system.")
+![molecular](../../../assets/molecular_demo.jpeg "Demo of a molecular similarity search system.")
