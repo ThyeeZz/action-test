@@ -32,5 +32,6 @@ jobs:
         env: 
           MSERVICE_URL: ${{secrets.MSERVICE_URL}}
         run: |
+          yarn
           node wordCount.js
 
