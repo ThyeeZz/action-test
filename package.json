@@ -2,5 +2,8 @@
   "dependencies": {
     "axios": "^0.25.0",
     "html-word-count": "^2.0.0"
+  },
+  "scripts": {
+    "build": "node ./build.js"
   }
 }

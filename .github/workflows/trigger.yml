@@ -25,13 +25,16 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "19"
 
       # Runs a single command using the runners shell
-      - name: Count words
+      - name: Inject environment variables
         env: 
           MSERVICE_URL: ${{secrets.MSERVICE_URL}}
-        run: |
-          yarn
-          node wordCount.js
+        
+      - name: Installing dependencies
+        run: yarn install
+
+      - name: Building project
+        run: yarn build
 
