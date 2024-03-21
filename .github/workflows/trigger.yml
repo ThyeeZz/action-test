@@ -26,15 +26,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "19"
-
-      # Runs a single command using the runners shell
-      - name: Inject environment variables
-        env: 
-          MSERVICE_URL: ${{secrets.MSERVICE_URL}}
         
       - name: Installing dependencies
         run: yarn install
 
       - name: Building project
         run: yarn build
+        env: 
+          TEST_ENV_URL: ${{secrets.TEST_ENV_URL}}
 
