@@ -29,9 +29,13 @@ jobs:
       - name: Make changes
         run: |
           node ./scripts/create-pr.js
+          git config --global user.email "jialian.ji@zilliz.com"
+          git config --global user.name "ThyeeZz"
           git add .
           git commit -m "Automated updates"
           git push origin auto-update-$(date +%Y%m%d-%H%M%S)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
             
       - name: Create Pull Request
         run: |
