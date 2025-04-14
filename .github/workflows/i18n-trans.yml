@@ -1,17 +1,18 @@
-name: i18n-translation-sync
+# name: i18n-translation-sync
 
-on:
-  push:
-    branches:
-      - main
-      - dev
+# on:
+#   push:
+#     branches:
+#       - main
+#       - dev
 
-workflow_dispatch:
+# workflow_dispatch:
 
-jobs: 
-  -name: Create pull request
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+# jobs: 
+#   -name: Create pull request
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
         
+# jobs: 
