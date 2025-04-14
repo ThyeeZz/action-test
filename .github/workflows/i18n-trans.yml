@@ -11,9 +11,9 @@ on:
 jobs: 
   sync-translations:
     runs-on: ubuntu-latest
-      env:
-        GIT_BRANCH: $GITHUB_REF_NAME
-        
+    env:
+      GIT_BRANCH: $GITHUB_REF_NAME
+
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
