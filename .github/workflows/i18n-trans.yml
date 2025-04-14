@@ -27,6 +27,12 @@ jobs:
           git checkout -b ${{ env.HEAD_BRANCH }} origin/${{ env.BASE_BRANCH }}
           echo "Base branch: ${{ env.BASE_BRANCH }}"
           echo "Work branch: ${{ env.HEAD_BRANCH }}"
+          
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Make changes
         run: |
