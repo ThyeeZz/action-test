@@ -10,13 +10,13 @@ on:
 
 jobs: 
   sync-translations:
+    runs-on: ubuntu-latest
+      env:
+        GIT_BRANCH: $GITHUB_REF_NAME
+        
     steps:
       - name: Checkout branch
-        runs-on: ubuntu-latest
-        env:
-          GIT_BRANCH: $GITHUB_REF_NAME
         uses: actions/checkout@v2
- 
  
       - name: Checkout branch
         run: echo "Checking out branch $GIT_BRANCH"
