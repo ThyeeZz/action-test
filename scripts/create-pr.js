@@ -4,25 +4,13 @@ const args = process.argv.slice(2);
 console.log('args--->', args);
 const [base_branch, head_branch, gh_token = ''] = args;
 
-
 // create-pr.js
-const createPR = async () => {
+const createAndMergePR = async () => {
   const { Octokit } = await import('@octokit/rest');
 
   const octokit = new Octokit({
     auth: gh_token
   });
-
-  const branches = await octokit.request('GET /repos/{owner}/{repo}/branches', {
-    owner: 'ThyeeZz',
-    repo: 'action-test',
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28'
-    }
-  });
-
-  const headBranch = branches.data.find(branch => branch.name === head_branch);
-  console.log('headBranch--->', headBranch);
 
   try {
     const response = await octokit.request('POST /repos/{owner}/{repo}/pulls', {
@@ -33,11 +21,23 @@ const createPR = async () => {
       head: `ThyeeZz:${head_branch}`,
       base: base_branch
     });
-    console.log('PR created:', response.data.html_url);
+
+    const pullNumber = response.data.number;
+    console.log('PR created:', pullNumber);
+
+    const mergeResponse = await octokit.request('PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge', {
+      owner: 'ThyeeZz',
+      repo: 'action-test',
+      pull_number: pullNumber,
+      commit_title: 'Automated i18n updates',
+      commit_message: 'sync i18n' + new Date()
+    });
+    console.log('pr merge result:', mergeResponse.data.message);
+
   } catch (error) {
     console.error('Error creating PR:', error);
     process.exit(1);
   }
 };
 
-createPR();
+createAndMergePR();
