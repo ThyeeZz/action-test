@@ -33,7 +33,7 @@ jobs:
           git config --global user.name "ThyeeZz"
           git add .
           git commit -m "Automated updates"
-          git push origin auto-update-$(date +%Y%m%d-%H%M%S)
+          git push --set-upstream origin auto-update-$(date +%Y%m%d-%H%M%S)
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
             
