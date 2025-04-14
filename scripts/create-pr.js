@@ -1,17 +1,28 @@
 
 const args = process.argv.slice(2);
 
-console.log('args--->', args)
-const [base_branch, head_branch, gh_token = ''] = args
+console.log('args--->', args);
+const [base_branch, head_branch, gh_token = ''] = args;
 
 
 // create-pr.js
 const createPR = async () => {
   const { Octokit } = await import('@octokit/rest');
-  
+
   const octokit = new Octokit({
-    auth:  gh_token
+    auth: gh_token
   });
+
+  const branches = await octokit.request('GET /repos/{owner}/{repo}/branches', {
+    owner: 'ThyeeZz',
+    repo: 'action-test',
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  });
+
+  const headBranch = branches.data.find(branch => branch.name === head_branch);
+  console.log('headBranch--->', headBranch);
 
   try {
     const response = await octokit.request('POST /repos/{owner}/{repo}/pulls', {
