@@ -5,7 +5,7 @@ const {join} = require('path');
 
 const content = fs.readFileSync(join(process.cwd(), 'README.md'), 'utf8');
 
-const newContent = content + '\n this is test 16'
+const newContent = content + '\n this is test 18'
 
 fs.writeFileSync(join(process.cwd(), 'README.md'), newContent);
 
