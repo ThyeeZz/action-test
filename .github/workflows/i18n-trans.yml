@@ -28,11 +28,11 @@ jobs:
           echo "Base branch: ${{ env.BASE_BRANCH }}"
           echo "Work branch: ${{ env.HEAD_BRANCH }}"
           
-      - name: Install yarn
-        run: npm install -g yarn
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Make changes
         run: |
