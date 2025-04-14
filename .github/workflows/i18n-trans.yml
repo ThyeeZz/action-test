@@ -53,7 +53,7 @@ jobs:
           
           # 等待几秒确保分支已经创建
           sleep 10
-          node ./scripts/create-pr.js ${{ env.HEAD_BRANCH }} ${{ env.BASE_BRANCH }} ${{ secrets.GH_TOKEN }}
+          node ./scripts/create-pr.js ${{ env.BASE_BRANCH }} ${{ env.HEAD_BRANCH }} ${{ secrets.GH_TOKEN }}
           
 
       - name: Auto-Merge PR
